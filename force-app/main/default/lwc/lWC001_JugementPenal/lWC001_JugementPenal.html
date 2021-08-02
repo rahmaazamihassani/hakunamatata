@@ -1,0 +1,30 @@
+<template>
+  <div style="height: 300px;">
+    <lightning-datatable
+            record-id={recordId}
+            key-field="id"
+            data={data}
+            columns={columns}
+            hide-checkbox-column=true>
+
+    </lightning-datatable>
+  </div>  
+    <!--<table>
+      <thead>
+        <th>Réference du jugement</th>
+        <th>Statut</th>
+        <th>Date du jugement</th>
+      </thead>
+      <tbody>
+        <template for:each={data} for:item="doss"> 
+          <tr key={doss.Id}>
+            <td>{doss.Name}</td>
+            <td>{doss.Statut__c}</td>
+            <td>{doss.DateJugement__c}</td>
+          </tr>
+        </template>
+        
+      </tbody>
+      
+    </table>-->
+</template>

@@ -1,0 +1,45 @@
+<template>
+  <div class="slds-page-header">
+    <div class="slds-page-header__row">
+      <div class="slds-page-header__col-title">
+        <div class="slds-media">
+          <div class="slds-media__figure">
+            <lightning-icon icon-name="standard:team_member" alternative-text="Approved" title="Approved"></lightning-icon>
+          </div>
+          <div class="slds-media__body">
+            <div class="slds-page-header__name">
+              <div class="slds-page-header__name-title">
+                <h1>
+                  <span style="margin-top:-3px" class="slds-page-header__title slds-truncate" title="">Victimes sinistres</span>
+                </h1>
+                <p title=""> Veuillez choisir les victimes sinistres à affecter à ce dossier judiciaire.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
+      <template for:each={VictimeS} for:item="vict">
+        <div key={vict.Name} style="display: flex;flex-direction:row;justify-content:space-between;padding:10px 20px 10px 20px;">
+          <div style="display: flex;flex-direction:column;">
+            <span style="color:rgb(36, 158, 214)">{vict.Name}</span>
+            <span style="color:rgb(117, 115, 115)">Etat de santé : {vict.EtatSante__c}</span>          
+          </div>
+          <div if:false={vict.isAffected__c}>
+            <lightning-button data-id={vict.Id} variant="brand" label="Affecter" class="slds-m-left_x-small"
+             alternative-text="Settings" title="Affecter" onclick={AffecterVS}>Affecter</lightning-button>
+          </div>
+          <div if:true={vict.isAffected__c}>
+            <lightning-button data-id={vict.Id} variant="brand-outline" label="Retirer" class="slds-m-left_x-small"
+             alternative-text="Settings" title="Retirer" onclick={RetirerVS}>Retirer</lightning-button>
+          </div>
+        </div> 
+      </template>
+    </div>
+  </article>
+</template>
