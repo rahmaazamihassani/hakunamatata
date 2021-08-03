@@ -22,12 +22,4 @@ public with sharing class DM008_VictimeSinistre {
 
         return DossierJudiciaireRecord;
     }
-
-    @AuraEnabled 
-    public static void AffecterVS(String DJid, String VIid){
-
-        String DJquery = 'select '+ ALL_FIELDS_DJ +' FROM DossierJudiciaire__c WHERE Id = \'' + DJid +  '\'';
-        String VSquery = 'select '+ ALL_FIELDS +' FROM VictimeSinistre__c WHERE Id = \'' + VSid +  '\'';
-    }
-
 }
