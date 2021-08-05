@@ -1,0 +1,70 @@
+<template>
+
+    <lightning-card title="Affectation Auxiliares">
+
+        <div class="slds-m-around_medium">
+            <template if:true={type}>
+                <lightning-combobox
+                        name="Type"
+                        label="Type d'auxiliaire"
+                        value={valueType}        
+                        options={options}
+                        onchange={handleChangeType}></lightning-combobox>
+            </template>
+
+            <template if:true={typeExpert}>
+                <template if:true={typeExpertAux.data}>
+                    <lightning-combobox name="Type Expert" label="Type Expert" value={value2}
+                        options={typeExpertAux.data.values} onchange={handleChange2}>
+                    </lightning-combobox>
+                </template>
+                </template>
+            <template if:true={villeAux.data}>
+                <lightning-combobox name="Ville" label="Ville" value={value}
+                    options={villeAux.data.values} onchange={handleChange}>
+                </lightning-combobox>
+
+            </template>
+
+          
+
+
+                <div class="slds-m-around_medium">
+                  
+                  <div class="slds-m-bottom_small">
+                      <lightning-input type="search"
+                         value={searchValue}
+                         label="Auxiliare Nom"
+                        
+                         ></lightning-input>
+                   </div>
+                   
+                   <lightning-button label="Search"
+                      onclick={handleSearchKeyword}
+                      variant="brand"></lightning-button>
+                  
+                </div>
+                 <template if:true={auxRecord}>
+                        <lightning-datatable
+                               key-field="id"
+                                 data={auxRecord}
+                                columns={columns}  
+                                >
+                        </lightning-datatable>
+                        <template if:true={datahere}>
+                            No data to display
+                        </template>
+                    
+                    <div class="slds-col">
+                        <span>
+                            <lightning-button label="Affecter" onclick={getSelectedAux} style="margin-left: 40%" variant="brand"></lightning-button>
+                        </span>
+                    </div>
+                </template>
+                   
+    
+        </div>
+
+    </lightning-card>
+
+</template>

@@ -1,0 +1,20 @@
+<template>
+    <div class="slds-box">
+            <template if:true={v}>
+                <lightning-record-form
+                object-api-name={objectApiName}
+                fields={fields}
+                onsuccess={handleSuccess}>
+                 <lightning-layout multiple-rows="true">
+                <lightning-layout-item for:each={fields} for:item="field" key={fieldName}
+                    class="slds-p-around_xx-small">
+                    <lightning-input-field field-name={field}
+                        onchange={setHasChanged}></lightning-input-field>
+                    <lightning-output-field field-name={field}>
+                    </lightning-output-field>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-record-form>
+        </template>
+    </div>
+</template>

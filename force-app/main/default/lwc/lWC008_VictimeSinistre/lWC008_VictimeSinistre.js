@@ -14,8 +14,8 @@ export default class LWC008_VictimeSinistre extends LightningElement {
     getDossierJudiciaire({'dossierId':this.recordId}).then(result=>
       {
         console.log(result);
-        this.dossierInterId=result.Sinistre__c;
-        this.getData1(result.Sinistre__c);
+        this.dossierInterId=result.DossierInterne__c;
+        this.getData1(result.DossierInterne__c);
       })
   }
 
