@@ -10,7 +10,7 @@
             <div class="slds-page-header__name">
               <div class="slds-page-header__name-title">
                 <h1>
-                  <span style="margin-top: 6px" class="slds-page-header__title slds-truncate" title="">Liste des experts</span>
+                  <span style="margin-top: 6px" class="slds-page-header__title slds-truncate" title="">Liste des experts affectés</span>
                 </h1>
               </div>
             </div>
@@ -27,29 +27,29 @@
         <div key={Exp.Name} style="display: flex;flex-direction:row;justify-content:space-between;padding:10px 20px 10px 20px;">
           <div style="display: flex;flex-direction:column;">
             <span style="color:rgb(36, 158, 214)">{Exp.Name}</span>
-            <span style="color:rgb(117, 115, 115)">Type : {Exp.TypeExpert__c}  /  Ville : {Exp.Ville__c}</span>      
+            <span style="color:rgb(117, 115, 115)">{Exp.TypeExpert__c}</span>      
           </div>
-          <div>
+          <!-- <div>
             <lightning-button data-type={Exp.RecordType.DeveloperName} data-name={Exp.Name} data-id={Exp.Id} variant="brand" label="Affecter" class="slds-m-left_x-small" alternative-text="Settings" title="Affecter" onclick={AffecterAux}>Affecter</lightning-button>
-          </div>
-          <template if:true={openModal}>  
+          </div> -->
+          <!-- <template if:true={openModal}>  
             <div class="slds-modal slds-fade-in-open slds-backdrop">  
               <div class="slds-modal__container"> 
-                <!------Body Section-->  
+                
                 <div class="slds-modal__content slds-p-around_medium">  
                   <div style="text-align: center;"> 
                     <P>Auxiliaire affecté avec succès.<br>
                     </P>  
                   </div>  
                 </div>  
-                <!------Footer Section-->  
+                 
                 <div class="slds-modal__footer">  
                   <lightning-button icon-name="utility:close" label="Fermer" variant="brand" onclick={closeModal}>  
                   </lightning-button>  
                 </div>  
               </div>  
             </div>
-          </template> 
+          </template>  -->
         </div> 
       </template>
     </div>
