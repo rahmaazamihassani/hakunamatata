@@ -6,13 +6,21 @@
           <div class="slds-media__figure">
             <lightning-icon icon-name="standard:employee_job" alternative-text="Approved" title="Approved"></lightning-icon>
           </div>
-          <div class="slds-media__body">
-            <div class="slds-page-header__name">
-              <div class="slds-page-header__name-title">
+          <div class="slds-media__body" style="display: flex;
+          flex-direction: column;
+          justify-content: center;">
+            <div class="slds-page-header__name" style="justify-content: space-between;">
+              <div class="slds-page-header__name-title" style="display: flex;
+              justify-content: space-between;">
                 <h1>
                   <span style="margin-top: 6px" class="slds-page-header__title slds-truncate" title="">Liste des experts affectés</span>
                 </h1>
               </div>
+              <lightning-button variant="brand"
+              label="Affecter un Auxiliare"
+              title="Open Modal"
+              onclick={customShowModalPopup}
+              class="slds-m-left_x-small"></lightning-button>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>52.0</apiVersion>
+    <apiVersion>50.0</apiVersion>
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__AppPage</target>
@@ -9,10 +9,4 @@
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
-    <targetConfigs>
-       <targetConfig targets="lightning__RecordPage">
-    <property name="fieldSetName" type="String" label="Enter the Fieldset API Name" required="true" default="fieldset"/>
-    <property name="objectApiName" type="String" label="Enter the Object API Name" required="true" default="object"/>
-    </targetConfig>
-    </targetConfigs>
 </LightningComponentBundle>
