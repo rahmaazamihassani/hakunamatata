@@ -17,7 +17,7 @@
                 </h1>
               </div>
               <lightning-button variant="brand"
-              label="Affecter un Auxiliare"
+              label="Affecter un avocat"
               title="Open Modal"
               onclick={customShowModalPopup}
               class="slds-m-left_x-small"></lightning-button>
@@ -34,8 +34,7 @@
       <template for:each={Avocat} for:item="Avo">
         <div key={Avo.Name} style="display: flex;flex-direction:row;justify-content:space-between;padding:10px 20px 10px 20px;">
           <div style="display: flex;flex-direction:column;">
-            <span style="color:rgb(36, 158, 214)">{Avo.Name}</span>
-            <!-- <span style="color:rgb(117, 115, 115)">Ville : {Avo.Ville__c}</span>           -->
+            <span style="color:rgb(36, 158, 214)">{Avo.Name}</span>          
           </div>
           <!-- <div>
             <lightning-button data-type={Avo.RecordType.DeveloperName} data-name={Avo.Name} data-id={Avo.Id} variant="brand" label="Affecter" class="slds-m-left_x-small" alternative-text="Settings" title="Affecter" onclick={AffecterAux}>Affecter</lightning-button>
@@ -71,12 +70,12 @@
                   size="small" ></lightning-icon>
                 <span class="slds-assistive-text">Close</span>
               </button>
-              <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Affecter un Auxiliaire</h2>
+              <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Affecter un avocat</h2>
             </header>
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
               <!--Body Modal -->
               <div class="slds-m-around_medium">
-                <template if:true={type}>
+                <!-- <template if:true={type}>
                   <lightning-combobox
                     name="Type"
                     label="Type d'auxiliaire"
@@ -84,15 +83,15 @@
                     options={options}
                     onchange={handleChangeType}>
                   </lightning-combobox>
-                </template>
-                <template if:true={typeExpert}>
+                </template> -->
+                <!-- <template if:true={typeExpert}>
                   <template if:true={optionsT}>
                     <lightning-combobox name="Type Expert" 
                       label="Type Expert" value={value2}
                       options={optionsT} onchange={handleChange2}>
                     </lightning-combobox>
                   </template>
-                </template>
+                </template> -->
                 <lightning-combobox
                   name="Ville"
                   label="Ville"
@@ -102,7 +101,7 @@
                 </lightning-combobox>
                 <lightning-input type="search"
                   value={searchValue}
-                  label="Nom de l'auxiliaire"
+                  label="Nom de l'avocat"
                   onchange={searchKeyword}>
                 </lightning-input>
                 <div class="centerButton">
@@ -117,7 +116,7 @@
                   columns={columns}>
                 </lightning-datatable>
                 <template if:true={datahere}>
-                  <div class="noData">Aucun auxiliaire trouvé.</div>
+                  <div class="noData">Aucun avocat trouvé.</div>
                 </template>
               </div>
               <!-- End Body Modal -->

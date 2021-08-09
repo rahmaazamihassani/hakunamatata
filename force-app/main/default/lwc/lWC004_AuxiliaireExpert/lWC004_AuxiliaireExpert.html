@@ -17,7 +17,7 @@
                 </h1>
               </div>
               <lightning-button variant="brand"
-              label="Affecter un Auxiliare"
+              label="Affecter un expert"
               title="Open Modal"
               onclick={customShowModalPopup}
               class="slds-m-left_x-small"></lightning-button>
@@ -71,12 +71,12 @@
                   size="small" ></lightning-icon>
                 <span class="slds-assistive-text">Close</span>
               </button>
-              <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Affecter un Auxiliaire</h2>
+              <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Affecter un expert</h2>
             </header>
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
               <!--Body Modal -->
               <div class="slds-m-around_medium">
-                <template if:true={type}>
+                <!-- <template if:true={type}>
                   <lightning-combobox
                     name="Type"
                     label="Type d'auxiliaire"
@@ -84,7 +84,7 @@
                     options={options}
                     onchange={handleChangeType}>
                   </lightning-combobox>
-                </template>
+                </template> -->
                 <template if:true={typeExpert}>
                   <template if:true={optionsT}>
                     <lightning-combobox name="Type Expert" 
@@ -102,7 +102,7 @@
                 </lightning-combobox>
                 <lightning-input type="search"
                   value={searchValue}
-                  label="Nom de l'auxiliaire"
+                  label="Nom de l'expert"
                   onchange={searchKeyword}>
                 </lightning-input>
                 <div class="centerButton">
@@ -117,7 +117,7 @@
                   columns={columns}>
                 </lightning-datatable>
                 <template if:true={datahere}>
-                  <div class="noData">Aucun auxiliaire trouvé.</div>
+                  <div class="noData">Aucun expert trouvé.</div>
                 </template>
               </div>
               <!-- End Body Modal -->

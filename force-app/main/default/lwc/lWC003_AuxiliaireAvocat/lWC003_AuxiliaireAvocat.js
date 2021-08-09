@@ -4,10 +4,10 @@ import CreateRecordAffAux from '@salesforce/apex/DM003_AuxiliaireAvocat.CreateRe
 import {getPicklistValues} from 'lightning/uiObjectInfoApi';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import VILLE_FIELD from '@salesforce/schema/Auxiliaire__c.Ville__c';
-import TYPE_EXPERT from '@salesforce/schema/Auxiliaire__c.TypeExpert__c'
+//import TYPE_EXPERT from '@salesforce/schema/Auxiliaire__c.TypeExpert__c'
 import AUXILIAIRE_OBJECT from  '@salesforce/schema/Auxiliaire__c';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import getAuxiliaireList from '@salesforce/apex/customSearchSobjectLWC.getAuxiliaireList';
+import getAvocatList from '@salesforce/apex/DM003_AuxiliaireAvocat.getAvocatList';
 
 export default class LWC003_AuxiliaireAvocat extends LightningElement {
   value ='';
@@ -27,19 +27,19 @@ export default class LWC003_AuxiliaireAvocat extends LightningElement {
   searchValue = '';
   columns = [
     { label: 'Nom', fieldName: 'Name' },
-    { label: 'Ville', fieldName: 'Ville__c'  },
-    { label: "Type d'auxiliaire", fieldName: 'TypeAuxiliaire__c' },
-    { label: "Type d'expert", fieldName: 'TypeExpert__c' }
+    { label: 'Ville', fieldName: 'Ville__c'  }
+    // ,{ label: "Type d'auxiliaire", fieldName: 'TypeAuxiliaire__c' },
+    // { label: "Type d'expert", fieldName: 'TypeExpert__c' }
   ];
   type=true;
   typeExpert=false;
-  get options() {  
-    return [
-      { label: '-Aucun-', value: '-Aucun-' },
-      { label: 'Avocat', value: 'Avocat' },
-      { label: 'Expert', value: 'Expert' },     
-    ];
-  }
+  // get options() {  
+  //   return [
+  //     { label: '-Aucun-', value: '-Aucun-' },
+  //     { label: 'Avocat', value: 'Avocat' },
+  //     { label: 'Expert', value: 'Expert' },     
+  //   ];
+  // }
 
   @wire(getObjectInfo, { objectApiName: AUXILIAIRE_OBJECT })
   auxMetadata;
@@ -64,19 +64,19 @@ export default class LWC003_AuxiliaireAvocat extends LightningElement {
   handleChange(event) {
     this.value = event.detail.value;
   }
-  handleChangeType(event) {
-    this.valueType = event.detail.value;
-    if(this.valueType=='-Aucun-'){
-      this.valueType = '';
-    }
-    if(this.valueType=='Expert'){
-      this.typeExpert = true;
+  // handleChangeType(event) {
+  //   this.valueType = event.detail.value;
+  //   if(this.valueType=='-Aucun-'){
+  //     this.valueType = '';
+  //   }
+  //   if(this.valueType=='Expert'){
+  //     this.typeExpert = true;
         
-    }
-    else{
-      this.typeExpert = false;
-    }
-  }
+  //   }
+  //   else{
+  //     this.typeExpert = false;
+  //   }
+  // }
   handleChange2(event) {
     this.value2 = event.detail.value;
     if(this.value2=='-Aucun-'){
@@ -104,10 +104,8 @@ export default class LWC003_AuxiliaireAvocat extends LightningElement {
   // call apex method on button click 
   handleSearchKeyword() {
     if(this.value!==''||this.valueType!==''||this.value2!==''||this.searchValue!==''){
-      getAuxiliaireList({
+      getAvocatList({
         valuekey: this.value,
-        recordType: this.valueType,
-        value2key:this.value2,
         searchKey: this.searchValue,
         id:this.recordId
       }).then(result => {
@@ -166,15 +164,13 @@ export default class LWC003_AuxiliaireAvocat extends LightningElement {
     rowsObject.forEach(element => {
       let targetId = element.Id;
       let targetName = element.Name;
-      let targetType = element.RecordType.DeveloperName;
-      console.log(targetType);
       CreateRecordAffAux({AuxId:targetId,DjId:this.recordId,AuxName:targetName})
       .then(data=>{
-        console.log(data);
+        console.log("Tiw 3lik", data);
         this.auxRecord=undefined;
         this.customHideModalPopup();
         const event = new ShowToastEvent({
-          title: 'Auxiliaire affecté avec succès.',
+          title: 'Avocat affecté avec succès.',
           variant: 'success'
         });
         this.dispatchEvent(event);
