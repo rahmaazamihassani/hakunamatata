@@ -46,7 +46,23 @@ export default class LWC004_AuxiliaireExpert extends LightningElement {
   auxMetadata;
 
   @wire(getPicklistValues,{recordTypeId: '$auxMetadata.data.defaultRecordTypeId', fieldApiName: VILLE_FIELD})
+  wiredData( { error, data } ) {
+    if ( data ) {
+      var a = {label:"-Aucun-",value:"-Aucun-"};
+      this.optionsv = data.values.map( objPL => {
+        return {
+            label: `${objPL.label}`,
+            value: `${objPL.value}`
+        };
+      });
+      this.optionsv.unshift(a);
+      console.log(this.optionsv);    
+    } else if ( error ) {
+      console.log( error);
+    }
 
+  }
+  @wire(getPicklistValues,{recordTypeId: '$auxMetadata.data.defaultRecordTypeId',fieldApiName: TYPE_EXPERT})
   wiredDatai( { error, data } ) {
     if ( data ) {
       var a = {label:"-Aucun-",value:"-Aucun-"};

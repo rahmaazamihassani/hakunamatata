@@ -45,22 +45,21 @@ export default class LWC003_AuxiliaireAvocat extends LightningElement {
   auxMetadata;
 
   @wire(getPicklistValues,{recordTypeId: '$auxMetadata.data.defaultRecordTypeId', fieldApiName: VILLE_FIELD})
-
-  wiredDatai( { error, data } ) {
-    if ( data ) {
-      var a = {label:"-Aucun-",value:"-Aucun-"};
-      this.optionsT = data.values.map( objPL => {
-        return {
-          label: `${objPL.label}`,
-          value: `${objPL.value}`
-        };
-      });
-      this.optionsT.unshift(a);
-      console.log(this.optionsT);
-    } else if ( error ) {
-      console.log( error);
+    wiredData( { error, data } ) {
+      if ( data ) {
+        var a = {label:"-Aucun-",value:"-Aucun-"};
+        this.optionsv = data.values.map( objPL => {
+          return {
+            label: `${objPL.label}`,
+            value: `${objPL.value}`
+          };
+        });
+        this.optionsv.unshift(a);
+        console.log(this.optionsv);         
+      } else if ( error ) {
+        console.log( error);
+      }
     }
-  }
   // on select picklist value to show the selected value
   handleChange(event) {
     this.value = event.detail.value;
