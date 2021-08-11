@@ -1,0 +1,76 @@
+<template>
+                            <!-- Button Litige -->
+    <div if:true={showButton} class="slds-grid" >   
+        <lightning-card>
+            <lightning-button variant="brand"
+            label="Affecter un dossier litige"
+            title="Open Modal"
+            onclick={customShowModalPopup2}
+            class="slds-m-left_x-small"></lightning-button>
+        </lightning-card>
+    </div>  
+                                    <!-- Pop up -->
+    <template if:true={customFormModal2}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={customHideModalPopup2}>
+                        <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        
+                        size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>    
+                    <h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Affecter un dossier litige</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <div class="slds-m-around_medium">
+                        <lightning-input type="search"
+                         value={searchValue}
+                         label="Nom du sociétaire"
+                        onchange={searchSocietaire}
+                         ></lightning-input>
+                         
+                         <lightning-input type="search"
+                         value={searchValue}
+                         label="Numéro du police"
+                        onchange={searchPolice}
+                         ></lightning-input>
+
+                         <lightning-input type="date" name="date"
+                         value={searchValue}
+                         label="Date d'ouverture"
+                         onchange={searchDate}
+                         ></lightning-input>
+
+                         <lightning-input type="search"
+                         value={searchValue}
+                         label="Référence du dossier"
+                        onchange={searchReference}
+                         ></lightning-input><br>
+
+                         <div class="centerButton">   
+                            <lightning-button label="Search"
+                               onclick={handleSearchKeyword2}
+                               variant="brand"></lightning-button>
+                         </div> 
+                            <lightning-datatable
+                               key-field="id"
+                                 data={litigeRecords}
+                                columns={columns}  
+                                max-row-selection=1>
+                            </lightning-datatable>
+                        </div>
+                        <div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Annuler" style="margin-left: 2%" onclick={customHideModalPopup2} ></lightning-button>
+                                <span>
+                                    <lightning-button label="Affecter" onclick={getDossier} style="margin-left: 2%" variant="brand"></lightning-button>
+                                </span>
+                            </footer>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</template>

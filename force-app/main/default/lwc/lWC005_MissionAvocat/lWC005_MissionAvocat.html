@@ -19,8 +19,23 @@
         </div>
       </div>
     </div>
+    <lightning-record-form
+                    object-api-name="Mission__c"
+                    record-type-id={recordTypeId}
+                    layout-type="Full"
+                    columns="2">
+                    
+                    </lightning-record-form>
+
+
+                    <lightning-record-edit-form
+                    object-api-name="Mission__c"
+                    >
+                    <lightning-input-field field-name="DossierJudiciaire__c" value={recordId}></lightning-input-field>
+                    <lightning-input-field field-name="Avocat__c" ></lightning-input-field>
+                    </lightning-record-edit-form>
   </div>
-  <article class="slds-card">
+  <!-- <article class="slds-card">
     <div class="slds-card__header slds-grid">
     </div>
     <div class="slds-card__body slds-card__body_inner">
@@ -32,12 +47,12 @@
               Réf: {MissAvo.Name}  /  
               Date de mission: {MissAvo.DateMission__c}</span>          
           </div>
-          <!-- <div>
+          
             <lightning-button data-id={MissAvo.Id} variant="brand" label="Affecter" class="slds-m-left_x-small"
              alternative-text="Settings" title="Affecter" onclick={AffecterVS}>Affecter</lightning-button>
-          </div> -->
+          </div> 
         </div> 
       </template>
     </div>
-  </article>
+  </article> -->
 </template>

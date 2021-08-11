@@ -41,4 +41,23 @@ public class DM007_DossierInterne {
 
     }
 
+    @AuraEnabled 
+    public static integer AffecterToDJ(ID DI, ID DJ){
+        System.debug('ID1 :'+DI);
+        System.debug('ID2 :'+DJ);
+
+        List<DossierJudiciaire__c> Dossiers=[select Id,DossierInterne__c from DossierJudiciaire__c where ID = :DJ  limit 1];
+            if (!Dossiers.isEmpty()){
+                try{
+                    DossierJudiciaire__c dossier=Dossiers[0];
+                    dossier.DossierInterne__c = DI;
+                    update dossier;
+                    return 1;
+                }  catch (Exception e){
+                    system.debug(e);
+                    return 0;}
+            }
+            return 0;
+        }
+
 }
